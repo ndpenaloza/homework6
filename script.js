@@ -28,7 +28,12 @@ $(document).ready(function() {
             console.log(response);
 
             // Transfer content to HTML
-            
+            //City, date, icon
+            // Temperature F
+            // Humidity %
+            // Windspeed mph
+            // UV index
+
         })
 
         // Append city to search-city-list div in an unordered list button
