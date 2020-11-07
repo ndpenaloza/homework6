@@ -11,6 +11,8 @@ $(document).ready(function() {
         console.log();
     }
 
+    
+
     var queryURL;
 
     var citySearchInput;
@@ -31,7 +33,7 @@ $(document).ready(function() {
 
         // Transfer content to HTML
         // City - Date - Icon
-        $("#current-city").html("<h1>" + response.name + " " + moment().format("MM/DD/YYYY")+ "<img src='https://openweathermap.org/img/wn" + response.weather[0].icon + "@2x.png'>" + "</h1>");
+        $("#current-city").html("<h1>" + response.name + " " + moment().format("MM/DD/YYYY") + "<img src='https://openweathermap.org/img/wn" + response.weather[0].icon + "@2x.png'>" + "</h1>");
         // Current Temperature
         $("#current-temp").text("Temperature: " + response.main.temp + " F");
         $("#current-wind").text("Wind Speed: " + response.wind.speed + " mph");
@@ -48,18 +50,24 @@ $(document).ready(function() {
             // DIV where seached cities will be appended
             var searchCityList = $("#search-city-list");
             // after city is searched, it will be stored as a button
-            var citySearchedBtn = $("<button>" + citySearchInput + "</button>");
+            var citySearchedBtn = $("<li class='list-group' role='button'>" + citySearchInput + "</li>");
             // citySearched will be appended to searchCityList div
-            searchCityList.append(citySearchedBtn);
+            searchCityList.prepend(citySearchedBtn);
 
         }
         // Calling buildCitySearchList function 
         buildCitySearchList();
+
+        // Empty search bar after click
+        $(citySearchInput).empty();
+
     })
     var fiveDay = $("#five-day");
     for (var i =1; i < 6; i++) {
-        let createForecastCards = $("<div class='card'>");
-        createForecastCards.append("<h5>")
+        let forecastCards = $("<div class='card'>");
+        forecastCards.append("<h5>"+ moment().format("MM/DD/YYYY") + "</h5>");
+        forecastCards.append("<p>Temp: " + response.main.temp + " F</p>");
+        forecastCards.append("<p>Humidity: " + response.main.humidity + " %</p>")
     }
 
     // 5 day forecast
