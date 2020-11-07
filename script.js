@@ -27,21 +27,43 @@ $(document).ready(function() {
             // Log response
             console.log(response);
 
+
             // Transfer content to HTML
-            //City, date, icon
-            // Temperature F
-            // Humidity %
-            // Windspeed mph
-            // UV index
+        $("#current-city").html("<h1>" + response.name + " Weather Details</h1>");
+        $("#current-wind").text("Wind Speed: " + response.wind.speed);
+        $("#current-humidity").text("Humidity: " + response.main.humidity);
+        
+            // // Transfer content to HTML
+            // var currentDayWeather = $("#current-day-weather");
+            // //City, date, icon
+            // var 
+            // // Temperature F
+            // var tempCurrent = $("'<p>Temperature: ' + ${} + '</p>");
+            // // Humidity %
+            // var humidityCurrent = $("'<p>Humidity: ' + ${} + '</p>'");
+            // // Windspeed mph
+            // var windspeedCurrent = $("'<p>Wind Speed: ' + ${} + '</p>'");
+            // // UV index
+            // var uvIndex = $("'<p>UV Index: ' + ${} + '</p>'");
+
+            // currentDayWeather.append(tempCurrent);
+            // currentDayWeather.append(humidityCurrent);
+            // currentDayWeather.append(windspeedCurrent);
+            // currentDayWeather.append(uvIndex);
+
+
+
+        
 
         })
+
 
         // Append city to search-city-list div in an unordered list button
         function buildCitySearchList() {
             // DIV where seached cities will be appended
             var searchCityList = $("#search-city-list");
             // after city is searched, it will be stored as a button
-            var citySearchedBtn = $("<button >");
+            var citySearchedBtn = $("<button>");
             // citySearched will be appended to searchCityList div
             searchCityList.append(citySearchedBtn);
 
