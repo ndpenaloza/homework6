@@ -6,9 +6,9 @@ $(document).ready(function() {
 
         var APIKey = "166a433c57516f51dfab1f7edaed8413";
 
-        var queryURL = "https://api.openweathermap.org/data/2.5/weather?" + citySearchInput + APIKey;
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + citySearchInput + "&appid=" + APIKey;
 
-        console.log()
+        console.log();
     }
 
     buildQueryURL();
