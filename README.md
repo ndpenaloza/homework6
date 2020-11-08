@@ -2,7 +2,7 @@
 
 Description
 
-
+Created a weather dashboard utilizing the openweather API. A can be searched on the search bar. The dashboard displayed the current weather's temperature, humidity, wind speed, and UV index. The dashboard also displayed the 5 day forecast. 
 
 ![Screenshot of weather dashboard](assets/images/weather.png)
 
