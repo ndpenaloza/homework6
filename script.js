@@ -31,16 +31,42 @@ $(document).ready(function() {
             // Log response
             console.log(response);
 
-        // Transfer content to HTML
-        // City - Date - Icon
-        $("#current-city").html("<h1>" + response.name + " " + moment().format("MM/DD/YYYY") + "<img src='https://openweathermap.org/img/wn" + response.weather[0].icon + "@2x.png'>" + "</h1>");
-        // Current Temperature
-        $("#current-temp").text("Temperature: " + response.main.temp + " F");
-        $("#current-wind").text("Wind Speed: " + response.wind.speed + " mph");
-        $("#current-humidity").text("Humidity: " + response.main.humidity + " %");
+            // Transfer content to HTML
+            // City - Date - Icon
+            $("#current-city").html("<h1>" + response.name + " " + moment().format("MM/DD/YYYY") + "<img src='https://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png'>" + "</h1>");
+            // Current Temperature
+            $("#current-temp").text("Temperature: " + response.main.temp + " F");
+            $("#current-wind").text("Wind Speed: " + response.wind.speed + " mph");
+            $("#current-humidity").text("Humidity: " + response.main.humidity + " %");
         
-    
-        
+            // Calling buildCitySearchList function 
+            buildCitySearchList();
+            
+            $.ajax({
+                url: "https://api.openweathermap.org/data/2.5/onecall?lat=" + response.coord.lat + "&lon=" +response.coord.lon + "&units=imperial&appid=166a433c57516f51dfab1f7edaed8413",
+                method: "GET"
+            })
+
+            // Store retrieved data for five day forecast
+            .then(function(fiveday) {
+                // log fiveday
+                console.log(fiveday);
+
+                $("#current-uvi").text("UV-Index: " + fiveday.current.uvi);
+
+                var fiveDay = $("#five-day");
+                for (var i =1; i < 6; i++) {
+
+                    let forecastCards = $("<div class='card col-md-2'>");
+                    forecastCards.append("<h5>"+ moment(fiveday.daily[i].dt * 1000).format("MM/DD/YYYY") + "</h5>");
+                    forecastCards.append("<img src='https://openweathermap.org/img/wn/" + fiveday.daily[i].weather[0].icon + "@2x.png'>");
+                    forecastCards.append("<p>Temp: " + fiveday.daily[i].temp.day + " F</p>");
+                    forecastCards.append("<p>Humidity: " + fiveday.daily[i].humidity + " %</p>");
+
+                    fiveDay.append(forecastCards);
+                }
+
+            })
 
         })
 
@@ -50,35 +76,17 @@ $(document).ready(function() {
             // DIV where seached cities will be appended
             var searchCityList = $("#search-city-list");
             // after city is searched, it will be stored as a button
-            var citySearchedBtn = $("<li class='list-group' role='button'>" + citySearchInput + "</li>");
+            var citySearchedBtn = $("<li class='list-group-item' role='button'>" + citySearchInput + "</li>");
             // citySearched will be appended to searchCityList div
             searchCityList.prepend(citySearchedBtn);
 
         }
-        // Calling buildCitySearchList function 
-        buildCitySearchList();
+        
 
         // Empty search bar after click
-        $(citySearchInput).empty();
+        $("#city-search-input").val("");
 
+        
     })
-    var fiveDay = $("#five-day");
-    for (var i =1; i < 6; i++) {
-        let forecastCards = $("<div class='card'>");
-        forecastCards.append("<h5>"+ moment().format("MM/DD/YYYY") + "</h5>");
-        forecastCards.append("<p>Temp: " + response.main.temp + " F</p>");
-        forecastCards.append("<p>Humidity: " + response.main.humidity + " %</p>")
-    }
-
-    // 5 day forecast
-    "#day1"
-
-    "day2"
-
-    "day3"
-
-    "day4"
-
-    "day5"
 
 });
