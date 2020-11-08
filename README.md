@@ -2,7 +2,9 @@
 
 Description
 
-![????](assets/images/???.png)
+
+
+![Screenshot of weather dashboard](assets/images/weather.png)
 
 Links
 
