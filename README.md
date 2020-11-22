@@ -1,4 +1,4 @@
-# homework6 - Server-Side APIs - Weather Dashboard
+# Server-Side APIs - Weather Dashboard
 
 Description
 
@@ -8,9 +8,9 @@ Created a weather dashboard utilizing the openweather API. A can be searched on 
 
 Links
 
-Application URL: https://ndpenaloza.github.io/homework6/
+Application URL: https://ndpenaloza.github.io/weather-dashboard/
 
-GitHub Repository URL: https://github.com/ndpenaloza/homework6
+GitHub Repository URL: https://github.com/ndpenaloza/weather-dashboard
 
 
 License
