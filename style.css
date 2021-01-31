@@ -1,4 +1,8 @@
 
 .jumbotron {
-    background-color: darkgray;
+    background-color: white;
+}
+
+body {
+    background-image: url("./assets/images/clouds.jpg");
 }

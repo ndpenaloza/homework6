@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(() => {
     // Need to build the query search
     function buildQueryURL() {
         // City Search Input
@@ -11,14 +11,13 @@ $(document).ready(function() {
         console.log();
     }
 
-    
 
     var queryURL;
 
     var citySearchInput;
 
     // Search button to find city
-    $("#search-button").on("click", function(event) { 
+    $("#search-button").on("click", (event) => { 
 
         buildQueryURL();
 
@@ -27,7 +26,7 @@ $(document).ready(function() {
             method: "GET"
         })
         // Store retrieved data in "response" object
-        .then(function(response) {
+        .then((response) => {
             // Log response
             console.log(response);
 
@@ -48,7 +47,7 @@ $(document).ready(function() {
             })
 
             // Store retrieved data for five day forecast
-            .then(function(fiveday) {
+            .then((fiveday) => {
                 // log fiveday
                 console.log(fiveday);
 
